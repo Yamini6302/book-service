@@ -1,0 +1,39 @@
+pipeline {
+    agent any
+
+    tools {
+		maven 'my-maven'
+		jdk 'my-jdk'
+	}
+
+    stages {
+        stage('Git') {
+            steps {
+                echo 'Git clone done'
+                git url:'https://github.com/Yamini6302/book-service.git', branch:'main'
+            }
+        }
+         stage('Build') {
+            steps {
+                echo 'Build done'
+                bat "mvn clean install -DskipTests"
+            }
+         }
+          stage('Test') {
+            steps {
+                echo 'Test done'
+                bat "mvn test"
+            }
+          }
+           stage('Deploy') {
+            steps {
+                echo 'Deploy done'
+                 bat "docker build -t auth-service ."
+			             bat "docker run -p 9997:9997 -d --name auth-container auth-service"
+            }
+
+        }
+
+    }
+
+}
