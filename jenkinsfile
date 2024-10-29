@@ -28,8 +28,8 @@ pipeline {
            stage('Deploy') {
             steps {
                 echo 'Deploy done'
-                 bat "docker build -t auth-service ."
-			             bat "docker run -p 9997:9997 -d --name auth-container auth-service"
+                 bat "docker build -t book-service ."
+			             bat "docker run -p 9999:9999 -d --name book-service book-service"
             }
 
         }
