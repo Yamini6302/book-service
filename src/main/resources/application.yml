@@ -5,21 +5,22 @@ eureka:
 
 spring:
   application:
-    name: book_service
+    name: authentication_service
   datasource:
-    url: jdbc:mysql://mysql-book:3306/book_db
+    url: jdbc:mysql://mysql-users:3306/users_db
     username: root
     password: pass@word1
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
-      hibernate:
-        ddl-auto: update
-        show-sql: true
-
-server:
-  port: 9999
+    hibernate:
+      ddl-auto: update
+      show-sql: true
 
 logging:
   level:
-    root=DEBUG:
+    root: DEBUG
+
+
+server:
+  port: 9997
 

@@ -10,7 +10,7 @@ pipeline {
         stage('Git') {
             steps {
                 echo 'Git clone done'
-                git url:'https://github.com/Yamini6302/book-service.git', branch:'main'
+                git url:'https://github.com/Yamini6302/authentication-service.git', branch:'main'
             }
         }
          stage('Build') {
@@ -28,8 +28,8 @@ pipeline {
            stage('Deploy') {
             steps {
                 echo 'Deploy done'
-                 bat "docker build -t book-service ."
-			             bat "docker run -p 9999:9999 -d --name book-service book-service"
+                 bat "docker build -t auth-service ."
+			             bat "docker run -p 9997:9997 -d --name authentication-container auth-service"
             }
 
         }
